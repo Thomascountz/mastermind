@@ -1,4 +1,4 @@
-class Game
+ class Game
   
   attr_accessor :player
   
