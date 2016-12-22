@@ -9,11 +9,10 @@ class Game
     @player = Player.new
     @board = Board.new
     @code = Code.new
-    ai_guessor_logic if option == 'creator'
-    human_guessor_logic if option == 'guessor'
+    play
   end
 
-  def human_guessor_logic
+  def play
     code = @code.create_code
     current_guess = nil
     puts 'Please choose a combination of four of the following colors.'

@@ -1,1 +1,1 @@
-require './lib/mastermind.rb'
+require './lib/code.rb'

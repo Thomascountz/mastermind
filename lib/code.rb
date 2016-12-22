@@ -1,13 +1,15 @@
 class Code
-  attr_reader :code_elements
+  attr_reader :code_elements, :code
 
-  def code_elements
-    %w(red blue yellow green purple orange)
+  def initialize 
+    @code_elements = %w(red blue yellow green purple orange)
+    @code = create_code
   end
-
+  
   def create_code
     code = []
-    4.times { code << code_elements.sample }
+    4.times { code << @code_elements.sample }
     code
   end
+
 end
