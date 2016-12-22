@@ -1,6 +1,6 @@
 require_relative 'spec_helper'
 
-RSpec.describe 'Code' do
+RSpec.describe Code do
   let(:code) { Code.new }
 
   describe '#create_code' do

@@ -1,15 +1,12 @@
 require_relative 'board'
-require_relative 'player'
 require_relative 'code'
 
 class Game
   attr_accessor :player
 
-  def initialize(_option)
-    @player = Player.new
+  def initialize
     @board = Board.new
     @code = Code.new
-    play
   end
 
   def play
@@ -22,8 +19,8 @@ class Game
     until (@board.num_of_turns == @board.allowed_turns) || @board.game_won?(code, current_guess)
 
       puts "\nPlease enter your guess.\n"
-      current_guess = @player.input
-      if @player.input_valid?(current_guess, @code.code_elements)
+      current_guess = input
+      if input_valid?(current_guess)
         puts "White Pegs: #{@board.white_pegs(code, current_guess)}"
         puts "Black Pegs: #{@board.black_pegs(code, current_guess)}"
         @board.num_of_turns += 1
@@ -39,4 +36,13 @@ class Game
 
     end
   end
+  
+  def input
+    gets.chomp.downcase.split(' ')
+  end
+
+  def input_valid?(input)
+    input.length == 4 && input.all? { |element| @code.code_elements.include? element }
+  end
+  
 end
