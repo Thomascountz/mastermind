@@ -5,7 +5,7 @@ require_relative 'code'
 class Game
   attr_accessor :player
 
-  def initialize(option)
+  def initialize(_option)
     @player = Player.new
     @board = Board.new
     @code = Code.new
@@ -13,15 +13,13 @@ class Game
   end
 
   def play
-    code = @code.create_code
+    code = @code.code
     current_guess = nil
     puts 'Please choose a combination of four of the following colors.'
     puts 'Notice: repeats are valid'
     puts @code.code_elements.to_s
 
     until (@board.num_of_turns == @board.allowed_turns) || @board.game_won?(code, current_guess)
-
-      # record_log(code, current_guess)
 
       puts "\nPlease enter your guess.\n"
       current_guess = @player.input
@@ -38,8 +36,6 @@ class Game
       puts "Congratulations, you solved it in #{@board.num_of_turns} turns!"
     elsif @board.num_of_turns == @board.allowed_turns
       puts "Sorry, you were unable to guess the code: #{code}."
-
-      # record_log(code, current_guess)
 
     end
   end
